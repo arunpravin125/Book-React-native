@@ -30,7 +30,7 @@ bookRoutes.post("/create", protectRoute, async (req, res) => {
 
     res.status(201).json(newBook);
   } catch (error) {
-    console.log("error in bookRoute -create");
+    console.log("error in bookRoute -create", error);
     res.status(500).json({ message: error.message });
   }
 });
@@ -53,14 +53,12 @@ bookRoutes.get("/", protectRoute, async (req, res) => {
 
     const totalBooks = await Book.countDocuments();
 
-    res
-      .status(200)
-      .json({
-        books,
-        currentPage: page,
-        totalBooks: totalBooks,
-        totalPages: Math.ceil(totalBooks / limit),
-      });
+    res.status(200).json({
+      books,
+      currentPage: page,
+      totalBooks: totalBooks,
+      totalPages: Math.ceil(totalBooks / limit),
+    });
   } catch (error) {
     console.log("error in getBooks", error.message);
     res.status(500).json({ message: "Internal server error" });
