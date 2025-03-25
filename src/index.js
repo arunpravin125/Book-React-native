@@ -7,7 +7,7 @@ import { bookRoutes } from "./Routes/bookRoutes.js";
 import job from "./lib/cron.js";
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
 app.use(cors());
 dotenv.config();
 const PORT = process.env.PORT || 3001;
