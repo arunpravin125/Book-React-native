@@ -59,6 +59,7 @@ authRouters.post("/signup", async (req, res) => {
         username: user.username,
         email: user.email,
         profileImg: user.profileImg,
+        createdAt: user.createdAt,
       },
     });
   } catch (error) {
@@ -95,6 +96,7 @@ authRouters.post("/login", async (req, res) => {
         username: checkEmail.username,
         email: checkEmail.email,
         profileImg: checkEmail.profileImg,
+        createdAt: checkEmail.createdAt,
       },
     });
   } catch (error) {

@@ -35,14 +35,14 @@ bookRoutes.post("/create", protectRoute, async (req, res) => {
   }
 });
 
-bookRoutes.get("/", protectRoute, async (req, res) => {
+bookRoutes.get("/getBooks", protectRoute, async (req, res) => {
   // const response = await fetch("http://localhost:3000/api/books?page=1&limit=5")
   // pagination => infinite loading
   try {
     //   page 1 ,limit 5 ,skip (1-1=0)*limit=skip(0) so it is = 5
     //   page 2 ,limit 5 ,skio(2-1=1)*limit=skip(5) so it moved = 10
     const page = req.query.page || 1;
-    const limit = req.query.limit || 5;
+    const limit = req.query.limit || 2;
     const skip = (page - 1) * limit;
 
     const books = await Book.find()
